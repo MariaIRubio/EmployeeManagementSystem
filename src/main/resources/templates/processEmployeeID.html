@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Process Employee ID</title>
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <style>
+        .error{color: red}
+        .container{width: 800px;
+            margin: 0 auto;
+        }
+        .box input[type=text], .box select {
+            width: auto;
+            min-width: 440px;
+        }
+        .radio{
+            margin-right: 32px;
+            margin-bottom: 10px;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+        .box{display: flex;
+            align-items: center}
+        nav{justify-content: flex-end;
+            margin-right: 50px}
+        label{width: 220px; display: inline-block}
+        input[type=submit]{
+            width: 50%;
+            margin-left: 220px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <a href="javascript:history.go(-1);" role="button">Back</a>
+
+    </nav>
+</header>
+<div class="container">
+<form action="/processEmployeeID" method="GET">
+    <label>Id: </label><input type="text" name="id">
+    <button>Send</button>
+</form>
+</div>
+</body>
+</html>

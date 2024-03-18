@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Start page</title>
+  <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+  />
+    <style>
+        .error{color: red}
+        .container{width: 800px;
+            margin: 0 auto;
+        }
+        .box input[type=text], .box select {
+            width: auto;
+            min-width: 440px;
+        }
+        .radio{
+            margin-right: 32px;
+            margin-bottom: 10px;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+        .box{display: flex;
+            align-items: center}
+        nav{justify-content: flex-end;
+            margin-right: 50px}
+        label{width: 220px; display: inline-block}
+        input[type=submit]{
+            width: 50%;
+            margin-left: 220px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Employee Management System</h2>
+  <h3>Menu</h3>
+  <a href="/addemployee" role="button">Add an employee</a>
+  <a href="/manageEmployees" role="button">Edit an employee</a>
+  <a href="/displayallemployees" role="button">Show all employees</a>
+</div>
+</body>
+</html>

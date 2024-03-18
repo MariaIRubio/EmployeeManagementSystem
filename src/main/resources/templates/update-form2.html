@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Form</title>
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <style>
+        .error{color: red}
+        .container{width: 800px;
+            margin: 0 auto;
+        }
+        .box input[type=text], .box select {
+            width: auto;
+            min-width: 440px;
+        }
+        .radio{
+            margin-right: 32px;
+            margin-bottom: 10px;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+        .box{display: flex;
+            align-items: center}
+        nav{justify-content: flex-end;
+            margin-right: 50px}
+        label{width: 220px; display: inline-block}
+        input[type=submit]{
+            width: 50%;
+            margin-left: 220px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <a href="/startpage" role="button">Back to Menu</a>
+    </nav>
+</header>
+<div class="container">
+    <h2>Update employee</h2>
+    <form th:action="@{/processUpdateForm/{id}(id=${employee.id})}" th:object="${employee}" method="POST">
+        <div class="box">
+            <label>Employee ID: </label>
+            <input type="hidden" th:field="*{id}" />
+        </div>
+        <div class="box">
+            <label>First name:</label>
+            <input type="text" th:field="*{firstName}" placeholder="First Name" required>
+            <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error"/>
+        </div>
+        <div class="box">
+            <label>Last name:</label>
+            <input type="text" th:field="*{lastName}" placeholder="Last Name" required>
+            <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="error"/>
+        </div>
+        <div class="box">
+            <label>Gender:</label>
+            <input type="radio" th:field="*{gender}" th:value="Male">Male</input>
+            <input type="radio" th:field="*{gender}" th:value="Female">Female</input>
+            <input type="radio" th:field="*{gender}" th:value="Diverse">Diverse</input>
+            <span th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="error"/>
+        </div>
+        <div class="box">
+            <label>Email:</label>
+            <input type="text" th:field="*{email}" placeholder="Email" required>
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"/>
+        </div>
+        <div class="box">
+            <label>Phone Number:</label>
+            <input type="text" th:field="*{phoneNumber}" placeholder="Phone Number" required>
+            <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="error"/>
+        </div>
+        <div class="box">
+            <label>Position:</label>
+            <select th:field="*{position}" required>
+                <option th:value="Manager">Manager</option>
+                <option th:value="HR">HR</option>
+                <option th:value="IT">IT</option>
+                <option th:value="Sales">Sales</option>
+                <option th:value="WebDeveloper">Web Developer</option>
+                <option th:value="SoftwareDeveloper">Software Developer</option>
+            </select>
+            <span th:if="${#fields.hasErrors('position')}" th:errors="*{position}" class="error"/>
+        </div>
+        <div class="box">
+            <label>Contract:</label>
+            <select th:field="*{contract}" required>
+                <option th:value="Fulltime">Full Time</option>
+                <option th:value="PartTime">Part Time</option>
+                <option th:value="Temporary">Temporary</option>
+                <option th:value="Practicum">Practicum</option>
+            </select>
+        </div>
+        <input type="submit" value="Update Employee">
+    </form>
+
+</div>
+
+</body>
+</html>

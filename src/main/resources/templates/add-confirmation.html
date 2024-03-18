@@ -31,6 +31,14 @@
             width: 50%;
             margin-left: 220px;
         }
+        .form-button{
+            justify-content: flex-start;
+            display: flex;
+            width: 100px;
+        }
+        .form-button form{
+            margin-right: 20px;
+        }
     </style>
 </head>
 <body>
@@ -63,16 +71,15 @@
         <label>Contract: </label><span th:text="${employee.contract}"/>
     </div>
 
-    <div>
+    <div class="form-button">
         <form th:action="@{/updateemployee/{id}(id=${employee.id})}" method="POST">
             <button type="submit" class="edit-button">Edit</button>
         </form>
-    </div>
-    <div>
         <form th:action="@{/deleteemployee/{id}(id=${employee.id})}" method="POST" onsubmit="return confirm('Are you sure you want to delete this employee?')">
             <button type="submit" class="delete-button">Delete</button>
         </form>
     </div>
+
 
 </div>
 </body>

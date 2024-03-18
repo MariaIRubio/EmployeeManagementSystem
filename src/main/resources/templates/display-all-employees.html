@@ -9,7 +9,7 @@
     />
     <style>
         .error{color: red}
-        .container{width: 800px;
+        .container{width: 900px;
             margin: 0 auto;
         }
         .box input[type=text], .box select {
@@ -35,17 +35,42 @@
         .boton-top{width: 200px}
         .boton-top button{
             background-color: red;
+            width: auto;
+            border: 0;
         }
         .top{
             display:flex;
             justify-content: space-evenly
         }
-        a{height: 83px;
+        a[role=button], button{
+            white-space: nowrap;
+            height: 60px;
         text-align: center}
-        .boton{width: 100px;margin-right: 5px}
-        .edit-button{width:20px;}
-        li{display: flex;
-        align-items: center}
+
+        .edit-button {
+            font-size: 14px;
+            padding: 6px 12px;
+            height: auto;
+            margin: 0 6px;
+            width: auto !important;
+        }
+        li {
+            display: flex;
+            align-items: center;
+            border-top: 1px dotted #999;
+            padding: 12px 0;
+            margin: 0;
+            position: relative;
+        }
+        li:last-child{border-bottom: 1px dotted #999;}
+        .button form {
+            display: inline-block;
+        }
+        .button {
+            position: absolute;
+            right:0
+        }
+
     </style>
 </head>
 <body>
@@ -74,12 +99,10 @@
         <span th:text="${employee.phoneNumber}"/> |
         <span th:text="${employee.position}"/> |
         <span th:text="${employee.contract}"/> |
-        <div class="boton">
+        <div class="button">
             <form th:action="@{/updateemployee/{id}(id=${employee.id})}" method="POST">
                 <button type="submit" class="edit-button">Edit</button>
             </form>
-        </div>
-        <div class="boton">
             <form th:action="@{/deleteemployee/{id}(id=${employee.id})}" method="POST" onsubmit="return confirm('Are you sure you want to delete this employee?')">
                 <button type="submit" class="edit-button">Delete</button>
             </form>

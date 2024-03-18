@@ -8,7 +8,8 @@
             href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
     />
     <style>
-        .error{color: red}
+        .error{color: red;
+        margin-left: 220px}
         .container{width: 800px;
             margin: 0 auto;
         }
@@ -44,33 +45,37 @@
 <div class="container">
     <h2>Add an employee</h2>
     <form th:action="@{/processAddForm}" th:object="${employee}" method="POST">
+        <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error"/>
         <div class="box">
             <label>First name:</label>
             <input type="text" th:field="*{firstName}" placeholder="First Name">
-            <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error"/>
         </div>
+
+        <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="error"/>
         <div class="box">
             <label>Last name:</label>
             <input type="text" th:field="*{lastName}" placeholder="Last Name">
-            <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="error"/>
         </div>
+        <span th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="error"/>
+
         <div class="box">
             <label>Gender:</label>
             <div class="radio"><input type="radio" th:field="*{gender}" th:value="Male">Male</input></div>
             <div class="radio"><input type="radio" th:field="*{gender}" th:value="Female">Female</input></div>
             <div class="radio"><input type="radio" th:field="*{gender}" th:value="Diverse">Diverse</input></div>
-            <span th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="error"/>
         </div>
+        <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="error"/>
         <div class="box">
             <label>Email:</label>
             <input type="text" th:field="*{email}" placeholder="Email">
-            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"/>
         </div>
+        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"/>
         <div class="box">
             <label>Phone Number:</label>
             <input type="text" th:field="*{phoneNumber}" placeholder="Phone Number">
-            <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="error"/>
         </div>
+
+        <span th:if="${#fields.hasErrors('position')}" th:errors="*{position}" class="error"/>
         <div class="box">
             <label>Position:</label>
             <select th:field="*{position}">
@@ -81,8 +86,8 @@
                 <option th:value="WebDeveloper">Web Developer</option>
                 <option th:value="SoftwareDeveloper">Software Developer</option>
             </select>
-            <span th:if="${#fields.hasErrors('position')}" th:errors="*{position}" class="error"/>
         </div>
+
         <div class="box">
             <label>Contract:</label>
             <select th:field="*{contract}">
